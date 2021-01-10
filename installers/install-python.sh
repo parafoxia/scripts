@@ -1,10 +1,17 @@
-sudo apt-get update
+echo "Configuring packages..."
+sudo apt-get update -qq
 sudo apt-get upgrade -qq
 sudo apt-get install -qq build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev pkg-config
+
+echo "Downloading Python $1..."
 cd /tmp
-wget https://www.python.org/ftp/python/$1/Python-$1.tgz
+wget -q https://www.python.org/ftp/python/$1/Python-$1.tgz
 tar -xf Python-$1.tgz
+
+echo "Installing Python $1..."
 cd Python-$1
-./configure --enable-optimizations --with-system-libssl --with-ensurepip=install --prefix=$HOME/.local
-make -j $(nproc)
-sudo make altinstall
+./configure -q --enable-optimizations --with-ensurepip=install
+make -q -i -j $(nproc)
+sudo make altinstall -q -i
+
+echo "All done!"
