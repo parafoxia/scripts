@@ -8,10 +8,12 @@ cd /tmp
 wget -q https://www.python.org/ftp/python/$1/Python-$1.tgz
 tar -xf Python-$1.tgz
 
-echo "Installing Python $1..."
+echo "Building Python $1..."
 cd Python-$1
 ./configure -q --enable-optimizations --with-ensurepip=install
-make -q -i -j $(nproc)
-sudo make altinstall -q -i
+make -s -j $(nproc)
+
+echo "Installing Python $1..."
+sudo make -s altinstall
 
 echo "All done!"
