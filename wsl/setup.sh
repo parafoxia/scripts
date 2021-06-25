@@ -9,7 +9,7 @@ fi
 
 sudo apt-get update
 sudo apt-get upgrade -y
-sudo apt-get install -y git neofetch texlive zsh build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev pkg-config liblzma-dev libpython3-dev python3-venv
+sudo apt-get install -y git neofetch texlive zsh build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev pkg-config liblzma-dev
 
 git clone --bare https://github.com/parafoxia/dotfiles $HOME/.dotfiles
 git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout
