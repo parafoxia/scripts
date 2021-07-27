@@ -5,14 +5,14 @@ sudo apt-get install -qq build-essential zlib1g-dev libncurses5-dev libgdbm-dev 
 echo "Downloading Python $1..."
 cd /tmp
 wget -q https://www.python.org/ftp/python/$1/Python-$1$2.tgz
-tar -xf Python-$1.tgz
+tar -xf Python-$1$2.tgz
 
-echo "Building Python $1..."
-cd Python-$1
+echo "Building Python $1$2..."
+cd Python-$1$2
 ./configure -q --enable-optimizations --with-ensurepip=install
 make -s -j $(nproc)
 
-echo "Installing Python $1..."
+echo "Installing Python $1$2..."
 sudo make -s altinstall
 
 echo "All done!"
