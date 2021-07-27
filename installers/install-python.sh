@@ -4,7 +4,7 @@ sudo apt-get install -qq build-essential zlib1g-dev libncurses5-dev libgdbm-dev 
 
 echo "Downloading Python $1..."
 cd /tmp
-wget -q https://www.python.org/ftp/python/$1/Python-$1.tgz
+wget -q https://www.python.org/ftp/python/$1/Python-$1$2.tgz
 tar -xf Python-$1.tgz
 
 echo "Building Python $1..."
