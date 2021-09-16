@@ -1,5 +1,5 @@
-if [ $# -eq 0 ] ; then
-    echo "ERROR: A Python version must be specified."
+if [ $# -ne 1 ] ; then
+    echo "Exactly one argument must be supplied."
     exit 1
 fi
 
@@ -7,8 +7,6 @@ if [ ! -d "$HOME/.local/share/nano" ] ; then
     mkdir -p $HOME/.local/share/nano
 fi
 
-sudo apt-get update
-sudo apt-get upgrade -y
 sudo apt-get install -y git neofetch texlive zsh build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev pkg-config liblzma-dev
 
 git clone --bare https://github.com/parafoxia/dotfiles $HOME/.dotfiles
@@ -25,4 +23,4 @@ sudo make -s altinstall
 sudo apt-get autoremove -y
 sudo apt-get clean
 
-echo "Setup done. Run the individual commands in the README to complete the setup."
+echo "Setup part 2 done! Refer back to the README to complete the setup."
