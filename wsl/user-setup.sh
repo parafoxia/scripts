@@ -1,7 +1,27 @@
+# Check args.
 if [ $# -ne 1 ] ; then
     echo "Exactly one argument must be supplied."
     exit 1
 fi
+
+# Patch nano in case this file doesn't exist for some reason.
+if [ ! -d "$HOME/.local/share/nano" ] ; then
+    mkdir -p $HOME/.local/share/nano
+fi
+
+# Install packages from apt.
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get install -y git neofetch texlive wget man build-essential \
+    zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev \
+    libreadline-dev libffi-dev libsqlite3-dev libbz2-dev pkg-config \
+    liblzma-dev
+sudo apt-get autoremove -y
+sudo apt-get clean
+
+# Clone config down.
+git clone --bare https://github.com/parafoxia/dotfiles $HOME/.dotfiles
+git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout
 
 # Download and install Python
 cd /tmp
@@ -19,10 +39,10 @@ sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/MrDogeBro/quic
 
 # Download and install Poetry
 cd /tmp
-python${$1:0:3} -m venv .venv
+python"$(cut -d'.' -f1-2 <<< '$1')" -m venv .venv
 source .venv/bin/activate
 curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python -
 deactivate
 rm -rf .venv
 
-echo "Setup part 3 done! You should be good to go now."
+echo "User setup complete!"
