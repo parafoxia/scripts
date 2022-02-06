@@ -27,8 +27,7 @@ for VER do
     elif [[ $VER == *"rc"* ]]; then
         PARTIAL="$(cut -d 'r' -f 1 <<< $VER)"
     else
-        echo "Version could be be parsed. Make sure your version follows the PEP 440 format."
-        exit 2
+        PARTIAL=$VER
     fi
 
     echo "Downloading Python $VER..."
