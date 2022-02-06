@@ -9,7 +9,7 @@ tar -xf Python-$1$2.tgz
 
 echo "Building Python $1$2..."
 cd Python-$1$2
-./configure -q --enable-optimizations --with-ensurepip=install
+./configure -q --enable-optimizations --with-ensurepip=install --with-system-ffi
 make -s -j $(nproc)
 
 echo "Installing Python $1$2..."
