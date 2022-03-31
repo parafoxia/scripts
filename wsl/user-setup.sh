@@ -6,7 +6,7 @@ fi
 # Install packages from apt.
 sudo apt-get update
 sudo apt-get upgrade -y
-sudo apt-get install -y git neofetch wget man
+sudo apt-get install -y git man neofetch sqlite3 wget
 sudo apt-get autoremove -y
 sudo apt-get clean
 
