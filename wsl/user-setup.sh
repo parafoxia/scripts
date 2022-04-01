@@ -15,7 +15,7 @@ git clone --bare https://github.com/parafoxia/dotfiles $HOME/.dotfiles
 git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout
 
 # Download and install other utils
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 echo "User setup complete!"
